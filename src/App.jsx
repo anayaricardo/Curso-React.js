@@ -14,7 +14,7 @@ import Footer from './components/Footer'
 import './App.css'
 
 function App() {
-  const myGithubRepo = "https://github.com/ricardoanaya/curso-react"; // ¡CAMBIA ESTO POR TU REPOSITORIO REAL!
+  const myGithubRepo = "https://github.com/anayaricardo/Curso-React.js/tree/master"; // ¡CAMBIA ESTO POR TU REPOSITORIO REAL!
   const myLinkedinProfile = "https://www.linkedin.com/in/ricardoanaya"; // ¡CAMBIA ESTO POR TU PERFIL DE LINKEDIN REAL!
   return (
     <>
