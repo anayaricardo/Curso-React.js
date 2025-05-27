@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function ListaDeTareas() {
-  const [tareas, setTareas] = useState(['Comprar pan', 'Lavar el coche']);
-  const [nuevaTarea, setNuevaTarea] = useState('');
+  const [tareas, setTareas] = useState(["Comprar pan", "Lavar el coche"]);
+  const [nuevaTarea, setNuevaTarea] = useState("");
 
   const handleInputChange = (event) => {
     setNuevaTarea(event.target.value);
   };
 
   const handleAgregarTarea = () => {
-    if (nuevaTarea.trim() !== '') {
+    if (nuevaTarea.trim() !== "") {
       setTareas([...tareas, nuevaTarea]);
-      setNuevaTarea('');
+      setNuevaTarea("");
     }
   };
 
@@ -27,12 +27,16 @@ function ListaDeTareas() {
       <ul>
         {tareas.map((tarea, index) => (
           <li key={index}>
-            {tarea} &nbsp;&nbsp;&nbsp;<button onClick={() => handleEliminarTarea(index)}>Eliminar</button><br/><br/>
+            {tarea} &nbsp;&nbsp;&nbsp;
+            <button onClick={() => handleEliminarTarea(index)}>Eliminar</button>
+            <br />
+            <br />
           </li>
         ))}
       </ul>
       <input type="text" value={nuevaTarea} onChange={handleInputChange} />
-      &nbsp;&nbsp;&nbsp;<button onClick={handleAgregarTarea}>Agregar Tarea</button>
+      &nbsp;&nbsp;&nbsp;
+      <button onClick={handleAgregarTarea}>Agregar Tarea</button>
     </div>
   );
 }

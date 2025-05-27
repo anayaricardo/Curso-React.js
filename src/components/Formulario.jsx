@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 function MiFormulario() {
-  const [nombre, setNombre] = useState('');
+  const [nombre, setNombre] = useState("");
   const [estaMarcado, setEstaMarcado] = useState(false);
 
   const handleNombreChange = (event) => {
@@ -16,18 +16,22 @@ function MiFormulario() {
     <div>
       <label>
         Nombre:&nbsp;&nbsp;
-        <input type="text" value={nombre} onChange={handleNombreChange} />    
+        <input type="text" value={nombre} onChange={handleNombreChange} />
       </label>
-      <br/>
-      <br/>
+      <br />
+      <br />
       <label>
-        <input type="checkbox" checked={estaMarcado} onChange={handleCheckboxChange} />
+        <input
+          type="checkbox"
+          checked={estaMarcado}
+          onChange={handleCheckboxChange}
+        />
         &nbsp;&nbsp;Aceptar términos
       </label>
-      <br/>
-      <br/>
+      <br />
+      <br />
       <p>Nombre ingresado: {nombre}</p>
-      <p>¿Términos aceptados?: {estaMarcado ? 'Sí' : 'No'}</p>
+      <p>¿Términos aceptados?: {estaMarcado ? "Sí" : "No"}</p>
     </div>
   );
 }

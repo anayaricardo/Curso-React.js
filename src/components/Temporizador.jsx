@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function Temporizador() {
   const [segundos, setSegundos] = useState(0);
@@ -28,7 +28,10 @@ function Temporizador() {
   return (
     <div>
       <p>Tiempo transcurrido: {segundos} segundos</p>
-      <button onClick={handleIniciarPausar}>{isRunning ? 'Pausar' : 'Iniciar'}</button>&nbsp;&nbsp;&nbsp;
+      <button onClick={handleIniciarPausar}>
+        {isRunning ? "Pausar" : "Iniciar"}
+      </button>
+      &nbsp;&nbsp;&nbsp;
       <button onClick={handleReiniciar}>Reiniciar</button>
     </div>
   );
