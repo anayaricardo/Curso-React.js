@@ -8,12 +8,12 @@ function Temporizador() {
     let intervalId;
     if (isRunning) {
       intervalId = setInterval(() => {
-        setSegundos((prevSegundos) => prevSegundos + 1);
-      }, 1000);
+        setSegundos((prevSegundos) => +(prevSegundos + 0.01).toFixed(2)); // Incrementa en 0.01 segundos porque toFixed añade dos decimales
+      }, 10); // 10 ms para mostrar centésimas
     } else {
       clearInterval(intervalId);
     }
-    return () => clearInterval(intervalId); // Limpieza al desmontar el componente
+    return () => clearInterval(intervalId);
   }, [isRunning]);
 
   const handleIniciarPausar = () => {
@@ -27,7 +27,7 @@ function Temporizador() {
 
   return (
     <div>
-      <p>Tiempo transcurrido: {segundos} segundos</p>
+      <p>Tiempo transcurrido: {segundos.toFixed(2)} segundos</p>
       <button onClick={handleIniciarPausar}>
         {isRunning ? "Pausar" : "Iniciar"}
       </button>

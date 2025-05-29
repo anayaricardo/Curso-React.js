@@ -1,83 +1,135 @@
+/* Header.css */
+/* ... (mantén tus estilos existentes del header) ... */
+
 .header {
-  background-color: #282c34;
-  padding: 15px 20px;
-  color: white;
+  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  min-width: 0;
+  background-color: var(--header-bg); /* Usa la variable CSS */
+  padding: 15px 0; /* Elimina padding lateral para que sea flush */
+  color: var(--header-text); /* Usa la variable CSS */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.header-title {
-  margin: 0;
-  font-size: 1.8em;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Para transición de tema */
+  position: relative;
+  margin-bottom: 32px; /* Agrega separación debajo del header */
 }
 
 .header-nav {
-  position: relative; /* Para posicionar el menú desplegable */
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 80px; /* Ajusta el espacio entre los botones */
+  position: relative;
+  justify-content: center; /* O space-between si quieres uno a cada lado */
+}
+
+.header-content {
+  max-width: 1200px; /* O el ancho que prefieras */
+  margin: 0 auto; /* Centra horizontalmente */
+  display: flex;
+  flex-direction: column; /* Vuelve a columna */
+  align-items: center; /* Centra horizontalmente */
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 16px; /* Espaciado lateral opcional */
+  gap: 12px; /* Espacio entre título y nav */
+}
+
+.header-title {
+  margin-bottom: 0; /* Elimina margen inferior si lo hay */
+}
+/* ... (mantén tus estilos existentes del header-title) ... */
+
+/* Estilos para el botón de cambio de tema */
+.theme-toggle-button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 15px;
+  margin-right: 40px; /* Espacio desde el borde derecho */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle-button:hover {
+  background-color: var(
+    --link-color
+  ); /* Usar el color de enlace para el hover */
+  color: var(--header-bg); /* O un color que contraste */
 }
 
 .menu-button {
-  background-color: #61dafb;
-  color: #282c34;
-  border: none;
+  background-color: var(--link-color);
+  color: var(--header-bg);
+  border: 1px solid transparent; /* <-- Borde transparente por defecto */
   padding: 10px 15px;
+  margin-left: 24px; /* Espacio desde el borde izquierdo */
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .menu-button:hover {
-  background-color: #4fa3d1;
+  background-color: var(--header-bg);
+  color: var(--link-color);
+  border: 1px solid var(--link-color); /* <-- Solo cambia el color del borde */
 }
 
 .dropdown-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   position: absolute;
-  top: 100%; /* Justo debajo del botón */
-  right: 0;
-  background-color: #333;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  min-width: 150px;
-  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  left: 0;
+  top: 100%;
+  min-width: 180px;
+  background: var(--header-bg);
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.18);
+  z-index: 100;
+  border-radius: 6px;
+  text-align: left;
+  list-style: none;
+  padding-left: 0;
+  max-height: 0;
   opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  overflow: hidden;
+  pointer-events: none;
+  /* Si ya no usas animación 3D, puedes quitar transform y su transición */
+  transition: max-height 0.3s cubic-bezier(0.4, 1.6, 0.6, 1),
+    opacity 0.25s cubic-bezier(0.4, 1.6, 0.6, 1);
+  backdrop-filter: blur(2px);
 }
 
 .dropdown-menu.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  display: block;
+  max-height: 500px;
+  opacity: 0.97;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+/* Items del menú */
+.dropdown-menu li {
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .dropdown-menu li a {
-  display: block;
-  padding: 10px 15px;
-  color: white;
+  color: var(--header-text);
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  display: block;
+  width: 100%;
 }
 
-.dropdown-menu li a:hover {
-  background-color: #555;
-  border-radius: 5px; /* Para que los bordes se vean bien al pasar el ratón */
+.dropdown-menu li:hover,
+.dropdown-menu li:focus-within {
+  background-color: var(--link-color); /* Usa el color principal de enlaces */
+  color: var(--header-bg);
 }
 
-.arrow {
-  font-size: 0.8em;
-  margin-left: 5px;
-  transition: transform 0.3s ease;
+.dropdown-menu li:hover a,
+.dropdown-menu li:focus-within a {
+  color: var(--header-bg);
 }

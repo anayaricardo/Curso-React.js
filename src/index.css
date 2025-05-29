@@ -1,38 +1,87 @@
+/* Variables globales */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Tema claro */
+body.light {
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --header-bg: #282c34;
+  --header-text: #ffffff;
+  --link-color: #61dafb;
+  --button-bg: #61dafb;
+  --button-text: #282c34;
+  --card-bg: #f9f9f9;
+  --hr-color: #eeeeee;
+}
+
+/* Tema oscuro */
+body.dark {
+  --background-color: #282c34;
+  --text-color: #f0f0f0;
+  --header-bg: #1a1e24;
+  --header-text: #61dafb;
+  --link-color: #61dafb;
+  --button-bg: #61dafb;
+  --button-text: #282c34;
+  --card-bg: #3c4048;
+  --hr-color: #555555;
+}
+
+/* Estilos generales */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  justify-content: flex-start; /* O center para centrar verticalmente */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari y Opera */
+}
+
+h1,
+.header-title {
+  font-size: clamp(
+    2rem,
+    5vw,
+    3.2em
+  ); /* Escala entre 2rem y 3.2em según el ancho */
+  line-height: 1.1;
+  margin: 0.5em 0;
+  word-break: break-word;
+  text-align: center;
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--link-color);
   text-decoration: inherit;
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 button {
@@ -54,6 +103,23 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--hr-color);
+  margin: 20px 0;
+}
+
+/* Animación para el logo */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -64,5 +130,73 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* Tarjetas de contenido */
+.main-content div {
+  background-color: var(--card-bg);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Centra todos los textos dentro del body */
+body,
+#root {
+  text-align: center;
+}
+
+/* Centra los formularios y sus elementos */
+form,
+.form-center,
+.mi-formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Centra los botones agrupados */
+.counter-buttons,
+.button-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+ul,
+ol {
+  display: block; /* Quita el flex */
+  margin-left: auto; /* Centra la lista */
+  margin-right: auto;
+  padding-left: 2em; /* Espacio estándar para bullets */
+  text-align: left; /* Alinea el texto y bullets a la izquierda */
+  width: fit-content; /* Ajusta el ancho al contenido */
+  list-style-position: outside; /* Bullets fuera del texto */
+}
+
+p {
+  max-width: 600px; /* O el ancho que prefieras */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; /* Opcional: alinea el texto a la izquierda */
+  width: 100%;
+}
+
+.main-content {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem;
+}
+
+/* Opcional: mejora en pantallas pequeñas */
+@media (max-width: 600px) {
+  h1,
+  .header-title {
+    font-size: 2rem;
   }
 }

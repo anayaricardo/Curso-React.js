@@ -7,7 +7,7 @@ const Counter = () => {
     <div>
       <p>El contador esta en: {count}</p>
       <button onClick={() => setCount(count + 1)}>Incrementar</button>
-      &nbsp;&nbsp;&nbsp;
+      &nbsp;
       <button onClick={() => setCount(count - 1)}>Decrementar</button>
     </div>
   );
