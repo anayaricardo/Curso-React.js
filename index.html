@@ -2,17 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/ico" href="/Curso-React.js/vite.svg.ico" />
+    <link rel="icon" type="image/ico" href="./vite.svg.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/Curso-React.js/assets/apple-touch-icon-B51nSIJP.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/Curso-React.js/assets/favicon-32x32-BctrhaN0.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/Curso-React.js/assets/favicon-16x16-CBV4AVpC.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/Curso-React.js/assets/apple-touch-icon-B51nSIJP.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/Curso-React.js/assets/favicon-32x32-BctrhaN0.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/Curso-React.js/assets/favicon-16x16-CBV4AVpC.png"
+    />
     <link rel="manifest" href="/Curso-React.js/assets/site-BwHFeIBa.webmanifest" />
     <title>Ejemplos de React.js</title>
-    <script type="module" crossorigin src="/Curso-React.js/assets/index-D7q1ALf-.js"></script>
-    <link rel="stylesheet" crossorigin href="/Curso-React.js/assets/index-BiU-LfAI.css">
+    <script type="module" crossorigin src="/Curso-React.js/assets/index-CUamtE35.js"></script>
+    <link rel="stylesheet" crossorigin href="/Curso-React.js/assets/index-CIUyznLX.css">
   </head>
   <body>
     <div id="root"></div>
   </body>
 </html>
+<script>
+  // This script is used to set the theme based on the user's preference
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const currentTheme = localStorage.getItem("theme");
+
+  if (currentTheme) {
+    document.documentElement.setAttribute("data-theme", currentTheme);
+  } else if (prefersDarkScheme.matches) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+  prefersDarkScheme.addEventListener("change", (e) => {
+    const newTheme = e.matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  });
+  document.documentElement.setAttribute("data-theme", "light");
+  localStorage.setItem("theme", "light");
+</script>
