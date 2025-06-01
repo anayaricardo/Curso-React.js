@@ -10,7 +10,7 @@ export const useTheme = () => {
 // Provider
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
+    return localStorage.getItem("dark") || "light"; // Valor por defecto es "dark"
   });
 
   useEffect(() => {
