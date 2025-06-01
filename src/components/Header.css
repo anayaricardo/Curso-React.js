@@ -2,7 +2,7 @@
 /* ... (mantén tus estilos existentes del header) ... */
 
 .header {
-  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  width: 100%; /* Ocupa todo el ancho de la ventana */
   min-width: 0;
   background-color: var(--header-bg); /* Usa la variable CSS */
   padding: 15px 0; /* Elimina padding lateral para que sea flush */

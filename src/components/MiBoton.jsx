@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function MiBoton() {
   const [estaResaltado, setEstaResaltado] = useState(false);
@@ -8,9 +8,14 @@ function MiBoton() {
   };
 
   return (
-    <button className={estaResaltado ? 'resaltado' : ''} onClick={handleClick}>
-      Haz clic aquí
-    </button>
+    <div>
+      <button
+        className={estaResaltado ? "resaltado" : ""}
+        onClick={handleClick}
+      >
+        Haz clic aquí
+      </button>
+    </div>
   );
 }
 

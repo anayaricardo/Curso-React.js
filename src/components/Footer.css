@@ -1,5 +1,5 @@
 .footer {
-  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  width: 100%; /* Ocupa todo el ancho de la ventana */
   background-color: #282c34;
   color: white;
   padding: 20px 20px;
@@ -7,10 +7,6 @@
   margin-top: 50px; /* Para separarlo del contenido */
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
 }
 
 .footer-content {
@@ -54,4 +50,14 @@
   fill: currentColor; /* Usa el color del texto del enlace */
   width: 24px;
   height: 24px;
+}
+
+/* Mejora para mobile */
+@media (max-width: 600px) {
+  .footer {
+    padding: 16px 4px;
+  }
+  .footer-content {
+    padding: 0 4px;
+  }
 }
