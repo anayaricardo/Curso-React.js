@@ -3,14 +3,17 @@ import MiFormulario from "./components/Formulario";
 import UseStateInfo from "./components/UseStateInfo";
 import WhyComponent from "./components/WhyComponent";
 import UIChangesInfo from "./components/UIChangesInfo";
-import MiBoton from "./components/MiBoton";
+// import MiBoton from "./components/MiBoton";
 import TemporaryStateInfo from "./components/TemporaryStateInfo";
 import Temporizador from "./components/Temporizador";
 import CollectionsInfo from "./components/CollectionsInfo";
 import ListaDeTareas from "./components/ListaDeTareas";
 import UseStateSummary from "./components/UseStateSummary";
 import Header from "./components/Header";
+import ToggleButton from "./components/ToggleButton";
 import Footer from "./components/Footer";
+import BooleanosInfo from "./components/BooleanosInfo";
+import RenderizadoCondicional from "./components/RenderizadoCondicional";
 import "./index.css";
 
 function Section({ children }) {
@@ -41,7 +44,10 @@ function App() {
         </Section>
         <Section>
           <UIChangesInfo />
-          <MiBoton />
+          {/* <MiBoton /> */}
+          <ToggleButton />
+          <BooleanosInfo />
+          <RenderizadoCondicional />
         </Section>
         <Section>
           <TemporaryStateInfo />
