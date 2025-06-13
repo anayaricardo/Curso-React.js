@@ -1,9 +1,25 @@
-import React from 'react';
-import './Footer.css'; // Asegúrate de que este archivo CSS existe
+import React, { useState, useEffect, useRef } from 'react';
+import './Footer.css';
 
 const Footer = ({ githubRepoLink = "https://github.com/tu-usuario/tu-repositorio", linkedinProfileLink = "https://www.linkedin.com/in/tu-perfil-linkedin" }) => {
+  const [showFooter, setShowFooter] = useState(false);
+  const lastScrollY = useRef(window.scrollY);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY < lastScrollY.current) {
+        setShowFooter(true); // Scroll hacia arriba
+      } else {
+        setShowFooter(false); // Scroll hacia abajo
+      }
+      lastScrollY.current = window.scrollY;
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <footer className="footer">
+    <footer className={`footer${showFooter ? " show-footer" : ""}`}>
       <div className="footer-content">
         <p>&copy; Creado por Ricardo Anaya</p>
         <div className="footer-links">
@@ -12,7 +28,7 @@ const Footer = ({ githubRepoLink = "https://github.com/tu-usuario/tu-repositorio
             href={githubRepoLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="social-link" // Clase genérica para enlaces sociales
+            className="social-link"
             aria-label="Conoce el código en GitHub"
           >
             <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" className="social-icon">
@@ -26,7 +42,7 @@ const Footer = ({ githubRepoLink = "https://github.com/tu-usuario/tu-repositorio
             href={linkedinProfileLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="social-link" // Misma clase para estilos compartidos
+            className="social-link"
             aria-label="Visita mi perfil de LinkedIn"
           >
             <svg height="32" aria-hidden="true" viewBox="0 0 24 24" version="1.1" width="32" data-view-component="true" className="social-icon">

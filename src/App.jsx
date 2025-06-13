@@ -14,6 +14,7 @@ import ToggleButton from "./components/ToggleButton";
 import Footer from "./components/Footer";
 import BooleanosInfo from "./components/BooleanosInfo";
 import RenderizadoCondicional from "./components/RenderizadoCondicional";
+import NameForm from "./components/NameForm";
 import "./index.css";
 
 function Section({ children }) {
@@ -48,6 +49,9 @@ function App() {
           <ToggleButton />
           <BooleanosInfo />
           <RenderizadoCondicional />
+        </Section>
+        <Section>
+          <NameForm />
         </Section>
         <Section>
           <TemporaryStateInfo />

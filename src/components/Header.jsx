@@ -7,12 +7,13 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const menuRef = useRef(null);
+  const [hideHeader, setHideHeader] = useState(false); // Oculta todo el header
+  const lastScrollY = useRef(window.scrollY);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Cierra el menú si se hace clic fuera de él
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -37,10 +38,24 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
+  // Oculta todo el header al hacer scroll hacia abajo
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > lastScrollY.current && window.scrollY > 60) {
+        setHideHeader(true); // Scroll hacia abajo
+      } else {
+        setHideHeader(false); // Scroll hacia arriba
+      }
+      lastScrollY.current = window.scrollY;
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="header">
+    <header className={`header${hideHeader ? " hide-header" : ""}`}>
       <div className="header-content">
-        <h1 className="header-title">Curso de React.js</h1>
+        <h1 className="header-title">React: Fundamentos </h1>
         <nav className="header-nav" ref={menuRef}>
           <div>
             <button className="menu-button" onClick={toggleMenu}>

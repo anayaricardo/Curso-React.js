@@ -2,41 +2,71 @@
 /* ... (mantén tus estilos existentes del header) ... */
 
 .header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 200;
   width: 100%; /* Ocupa todo el ancho de la ventana */
   min-width: 0;
   background-color: var(--header-bg); /* Usa la variable CSS */
-  padding: 15px 0; /* Elimina padding lateral para que sea flush */
+  padding: 0; /* Elimina padding superior/inferior para evitar salto */
   color: var(--header-text); /* Usa la variable CSS */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, color 0.3s ease; /* Para transición de tema */
-  position: relative;
+  will-change: transform, opacity;
+  transition: background-color 0.4s cubic-bezier(0.4, 0.6, 0.6, 1),
+    color 0.4s cubic-bezier(0.4, 0.6, 0.6, 1),
+    transform 0.4s cubic-bezier(0.4, 0.6, 0.6, 1),
+    opacity 0.4s cubic-bezier(0.4, 0.6, 0.6, 1); /* Para transición de tema */
   margin-bottom: 32px; /* Agrega separación debajo del header */
 }
 
+.header.hide-header {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
 .header-nav {
-  padding: 10px;
+  position: relative;
+  padding: 10px 0;
   display: flex;
   align-items: center;
   gap: 80px; /* Ajusta el espacio entre los botones */
-  position: relative;
+  z-index: 100;
+  background: var(--header-bg);
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   justify-content: center; /* O space-between si quieres uno a cada lado */
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0.6, 0.6, 1);
+}
+
+.header-nav.hide-header-nav {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-40px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0.6, 0.6, 1);
 }
 
 .header-content {
-  max-width: 1200px; /* O el ancho que prefieras */
-  margin: 0 auto; /* Centra horizontalmente */
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column; /* Vuelve a columna */
-  align-items: center; /* Centra horizontalmente */
+  flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
-  padding: 0 16px; /* Espaciado lateral opcional */
-  gap: 12px; /* Espacio entre título y nav */
+  padding: 0 16px;
+  gap: 1px;
+  transition: gap 0.4s cubic-bezier(0.4, 0.6, 0.6, 1),
+    min-height 0.4s cubic-bezier(0.4, 0.6, 0.6, 1),
+    padding 0.4s cubic-bezier(0.4, 0.6, 0.6, 1);
 }
 
 .header-title {
-  margin-bottom: 0; /* Elimina margen inferior si lo hay */
+  margin-bottom: 0;
+  /* Solo transición de color si quieres, pero sin opacity, height, margin, padding, transform */
 }
+
 /* ... (mantén tus estilos existentes del header-title) ... */
 
 /* Estilos para el botón de cambio de tema */
@@ -132,4 +162,10 @@
 .dropdown-menu li:hover a,
 .dropdown-menu li:focus-within a {
   color: var(--header-bg);
+}
+
+/* Asegura que el padre de .header no tenga overflow:hidden ni overflow:auto */
+body,
+#root {
+  overflow: visible !important;
 }

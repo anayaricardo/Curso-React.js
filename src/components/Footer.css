@@ -7,6 +7,16 @@
   margin-top: 50px; /* Para separarlo del contenido */
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
   position: relative;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(100px);
+  transition: opacity 0.4s cubic-bezier(0.4, 0.6, 0.6, 1), transform 0.4s cubic-bezier(0.4, 0.6, 0.6, 1);
+}
+
+.footer.show-footer {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .footer-content {
